@@ -1,1 +1,0 @@
-A branch is a copy of master in which you can make changes, comments can be made on those changes, and where the changes can selectively be merged to master again.

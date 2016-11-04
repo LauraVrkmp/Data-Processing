@@ -12,7 +12,6 @@ TARGET_URL = "http://www.imdb.com/search/title?num_votes=5000,&sort=user_rating,
 BACKUP_HTML = 'tvseries.html'
 OUTPUT_CSV = 'tvseries.csv'
 
-
 def extract_tvseries(dom):
     '''
     Extract a list of highest rated TV series from DOM (of IMDB page).
@@ -24,13 +23,51 @@ def extract_tvseries(dom):
     - Actors/actresses (comma separated if more than one)
     - Runtime (only a number!)
     '''
+    # empty list of series
+    tvseries = []
+     
+    for element_0 in dom.by_tag("div.lister-item-content"):
+        
+        # empty list of details
+        tvseries_item = []
+        
+        #title
+        for element_1 in element_0.by_tag("h3.lister-item-header"):
+            for element_2 in element_1.by_tag("a"):
+                title = element_2.content.encode('ascii', 'ignore')
+                tvseries_item.append(title)
+        
+        #rating
+        for element_1 in element_0.by_tag("div.ratings-bar"):
+            for element_2 in element_1.by_tag("strong"):
+                rating = element_2.content.encode('ascii', 'ignore')
+                tvseries_item.append(rating)
+        
+        #genre
+        for element_1 in element_0.by_tag("p"):
+            for element_2 in element_1.by_tag("span.genre"):
+                genre = element_2.content.encode('ascii', 'ignore').strip(" ").strip("\n")
+                tvseries_item.append(genre)
+            
+        #actors
+        actors = ""
+        for element_1 in element_0.by_tag("p"):
+            for element_2 in element_1("a")[:-1]:
+                actors += element_2.content.encode('ascii', 'ignore') + ", "
+            for element_2 in element_1("a")[-1:]:
+                actors += element_2.content.encode('ascii', 'ignore')
+        tvseries_item.append(actors)          
+            
+        #runtime
+        for element_1 in element_0.by_tag("p"):
+            for element_2 in element_1.by_tag("span.runtime"):
+                runtime = element_2.content.encode('ascii', 'ignore').strip(' min')
+                tvseries_item.append(runtime)
+            
+        # fill list of series with details
+        tvseries.append(tvseries_item)
 
-    # ADD YOUR CODE HERE TO EXTRACT THE ABOVE INFORMATION ABOUT THE
-    # HIGHEST RATED TV-SERIES
-    # NOTE: FOR THIS EXERCISE YOU ARE ALLOWED (BUT NOT REQUIRED) TO IGNORE
-    # UNICODE CHARACTERS AND SIMPLY LEAVE THEM OUT OF THE OUTPUT.
-
-    return []  # replace this line as well as appropriate
+    return tvseries
 
 
 def save_csv(f, tvseries):
@@ -39,8 +76,10 @@ def save_csv(f, tvseries):
     '''
     writer = csv.writer(f)
     writer.writerow(['Title', 'Rating', 'Genre', 'Actors', 'Runtime'])
-
-    # ADD SOME CODE OF YOURSELF HERE TO WRITE THE TV-SERIES TO DISK
+    
+    # print tvseries_item per line
+    for element in tvseries:
+        writer.writerow(element)
 
 if __name__ == '__main__':
     # Download the HTML file

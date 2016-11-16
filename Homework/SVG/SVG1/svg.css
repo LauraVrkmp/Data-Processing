@@ -1,0 +1,26 @@
+/*
+# Laura Veerkamp
+# 10361561
+*/
+
+/* continent color */
+.continent
+{
+  
+}
+
+/* country colors */
+#pl
+{
+	fill: purple;
+}
+
+#port
+{
+	fill: green;
+}
+
+#nor
+{
+	fill: brown;
+}

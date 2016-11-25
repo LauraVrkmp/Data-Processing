@@ -1,0 +1,39 @@
+/*
+# Laura Veerkamp
+# 10361561
+*/
+
+#headtitle {
+	font-family: helvetica;
+	color: black;
+	font-size: 30px;
+}
+
+#subtitle {
+	font-family: helvetica;
+	color: black;
+	font-size: 18px;
+	padding-top: 6px;
+}
+
+.chart rect {
+	fill: #e5f5f9;
+}
+
+.chart text {
+	font-size: 12px;
+	font-family: helvetica;
+}
+
+.axis path,
+.axis line {
+	fill: none;
+	stroke: black;
+}
+
+.d3-tip {
+	background: #f0f0f0;
+	color: black;
+	padding: 8px;
+	border-radius: 2px;
+}

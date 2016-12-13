@@ -1,0 +1,36 @@
+/* Laura Veerkamp
+** 10361561
+*/
+body {
+	text-align: center;
+}
+
+.overlay {
+	fill: none;
+	pointer-events: all;
+}
+
+.axis line,
+.axis path {
+	fill: none;
+	stroke: black;
+}
+
+.line {
+	fill: none;
+	stroke-width: 2px;
+}
+
+#Hoorn {
+	stroke: steelblue;
+}
+
+#Maastricht {
+	stroke: red;
+}
+
+.pointer circle {
+	fill: none;
+	stroke: black;
+	stroke-width: 2px;
+}

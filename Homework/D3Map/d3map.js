@@ -272,6 +272,10 @@ for (var x in country_codes)
 	}
 }
 
+console.log(data)
+console.log('a')
+
+
 // determine fill code based on data
 function determineColor(data)
 {

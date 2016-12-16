@@ -1,0 +1,30 @@
+<!--
+Laura Veerkamp
+10361561
+D3LinkedViews
+--> 
+
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Quality of Life Index</title>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+		<script src="datamaps.all.hires.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="d3linkedviews(1).css">
+    </head>
+    <body>
+		<center><div id = "text"><h1>Quality of Life index over the years</h1></div>
+		<script src="d3.slider.js"></script>
+		<script src="d3linkedviews.js"></script>
+		<div id = "container" style="position: relative; width: 900px; height: 700px;"></div>
+		<br><br><br>
+		<div id="slider" style="width: 400px"></div>
+		<script>d3.select('#slider').call(d3.slider().axis(true).min(2012).max(2015).step(1));</script>
+		<br><br><svg class="barchart" style="position: relative; width: 900px; height: 400px;"></svg>
+		<script src="d3linkedviewsbar.js"></script>
+		<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+		<br><br>
+		<div id = "text"><p>Data from <a href = "https://www.numbeo.com/quality-of-life/rankings_by_country.jsp?title=2015&region=150">NUMBEO</a></p></div></center>
+    </body>
+</html>

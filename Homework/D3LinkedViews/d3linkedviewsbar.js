@@ -36,8 +36,9 @@ function loadData() {
 
 	// load data from the json file
 	d3.json(data_load, function(data) {
+		console.log(data);
 		// set domains
-		x.domain(data.map(function(d) { return d.Country; }));
+		x.domain(data.map(function(d) { console.log(d.Country);return d.Country; }));
 		y.domain([-15, 230]);
 
 		// create x-axis
@@ -76,7 +77,7 @@ function loadData() {
 		  .data(data)
 		.enter().append("rect")
 		  .attr("class", "bar")
-		  .attr("x", function(d) { return x(d.Country); })
+		  .attr("x", function(d) { console.log((d.Country));return x(d.Country); })
 		  .attr("y", function(d) { return y(d.twelve); })
 		  .attr("height", function(d) { return height - y(d.twelve); })
 		  .attr("width", x.rangeBand())
